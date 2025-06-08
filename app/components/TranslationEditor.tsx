@@ -49,15 +49,14 @@ export default function TranslationEditor() {
   
     try {
       for (const item of updates) {
-        const res = await fetch(`${https://localization-api-0fci.onrender.com/localizations`, {
+        const res = await fetch('https://localization-api-0fci.onrender.com/localizations', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(item),
         });
-  
+      
         if (!res.ok) {
-          const errMsg = await res.text();
-          console.error(`Failed to update key "${item.key}": ${errMsg}`);
+          console.error(`Failed to update item:`, item);
         }
       }
   
