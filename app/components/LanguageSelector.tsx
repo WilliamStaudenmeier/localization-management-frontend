@@ -3,7 +3,7 @@
 
 import { useProjectStore } from '../store/useProjectStore';
 
-const languages = ['en', 'fr', 'sp', 'jp'] as const;
+const languages = ['en', 'fr', 'es', 'ja'] as const;
 
 export default function LanguageSelector() {
   const { selectedLanguage, setSelectedLanguage } = useProjectStore();
