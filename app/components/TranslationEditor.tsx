@@ -18,7 +18,7 @@ export default function TranslationEditor() {
 
   useEffect(() => {
     fetchTranslations();
-  }, [selectedLanguage, selectedProjectId, searchTerm]);
+  }, [selectedLanguage, selectedProjectId, searchTerm, fetchTranslations]);
 
   const langCode = selectedLanguage;
 
