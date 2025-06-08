@@ -11,10 +11,6 @@ export default function Toolbar() {
     setSearchTerm(e.target.value);
   };
 
-  const handleAddKey = () => {
-    alert('Add Key clicked — implement modal or inline form');
-  };
-
   return (
     <div className="w-full flex items-center justify-between gap-4">
       <input
