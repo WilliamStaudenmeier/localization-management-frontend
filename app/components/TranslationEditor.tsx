@@ -3,13 +3,6 @@
 import { useEffect, useState } from 'react';
 import { useProjectStore } from '../store/useProjectStore';
 
-const languageCodeMap: Record<string, string> = {
-  English: 'en',
-  French: 'fr',
-  Spanish: 'es',
-  Japanese: 'ja',
-};
-
 export default function TranslationEditor() {
   const {
     translations,
