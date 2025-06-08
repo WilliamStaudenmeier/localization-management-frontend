@@ -146,17 +146,24 @@ export const useProjectStore = create<ProjectState>((set, get) => ({
     
       try {
         const res = await fetch(`/api/localizations/${selectedProjectId}/${selectedLanguage}`);
-    
         if (!res.ok) throw new Error('Failed to fetch translations');
     
         const json = await res.json();
         const rawData = json.localizations;
     
-        // Transform raw data to match expected format
-        let data = rawData.map((entry: any) => ({
+        type RawTranslationEntry = {
+          id: string;
+          key: string;
+          value: string;
+          updated_at: string;
+          updated_by: string;
+          category?: string;
+        };
+    
+        let data = (rawData as RawTranslationEntry[]).map((entry) => ({
           id: entry.id,
           key: entry.key,
-          category: entry.category || 'general', // or some fallback
+          category: entry.category || 'general',
           translations: {
             [selectedLanguage]: {
               value: entry.value,
@@ -167,7 +174,7 @@ export const useProjectStore = create<ProjectState>((set, get) => ({
         }));
     
         if (searchTerm) {
-          data = data.filter((entry: any) =>
+          data = data.filter((entry) =>
             entry.key.toLowerCase().includes(searchTerm.toLowerCase())
           );
         }
@@ -176,5 +183,6 @@ export const useProjectStore = create<ProjectState>((set, get) => ({
       } catch (error) {
         console.error('Error loading translations:', error);
       }
-    }    
+    }
+       
 }));
