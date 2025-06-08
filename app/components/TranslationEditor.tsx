@@ -49,7 +49,7 @@ export default function TranslationEditor() {
   
     try {
       for (const item of updates) {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/localizations`, {
+        const res = await fetch(`${https://localization-api-0fci.onrender.com/localizations`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(item),
