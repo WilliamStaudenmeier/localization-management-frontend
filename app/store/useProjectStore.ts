@@ -145,7 +145,7 @@ export const useProjectStore = create<ProjectState>((set, get) => ({
       const { selectedProjectId, selectedLanguage, searchTerm } = get();
     
       try {
-        const res = await fetch(`NEXT_PUBLIC_API_URL/localizations/${selectedProjectId}/${selectedLanguage}`);
+        const res = await fetch(`https://localization-api-0fci.onrender.com/localizations/${selectedProjectId}/${selectedLanguage}`);
         if (!res.ok) throw new Error('Failed to fetch translations');
     
         const json = await res.json();
